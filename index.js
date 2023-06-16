@@ -14,12 +14,12 @@ const shapes = require('./lib/shapes.js');
 
 // Get questions
 const questions = [
-    //   {
-    //     type: 'list',
-    //     name: 'shape',
-    //     message: 'Choose a shape for logo:',
-    //     choices: ['Square', 'Triangle' ,'Circle'],
-    //  },    
+      {
+        type: 'list',
+        name: 'shape',
+        message: 'Choose a shape for logo:',
+        choices: ['Square', 'Triangle' ,'Circle'],
+     },    
     {
         type: 'input',
         name: 'color',
@@ -42,7 +42,7 @@ const questions = [
 console.log('Creating a new Shape...');
 
 function writeToFile(fileName, data) {
-    const svgContent = `<svg width="300" height="200">${data}</svg>`
+    const svgContent = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">${data}</svg>`
     fs.writeFile(fileName, svgContent, (err) =>
     err ? console.error(err) : console.log("Generated logo.svg")
     );
@@ -51,12 +51,28 @@ function writeToFile(fileName, data) {
 // Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then(answers => {
-        const newTriangle = new shapes.Triangle(answers.color, answers.text, answers.textColor);
-        const svgString = newTriangle.render();
+    const shapeChoice = answers.shape;
+    let newShape;
+
+    switch (shapeChoice) {
+      case 'Square':
+        newShape = new shapes.Square(answers.color, answers.text, answers.textColor);
+        break;
+      case 'Triangle':
+        newShape = new shapes.Triangle(answers.color, answers.text, answers.textColor);
+        break;
+      case 'Circle':
+        newShape = new shapes.Circle(answers.color, answers.text, answers.textColor);
+        break;
+      default:
+        console.log('Invalid shape choice.');
+        return;
+    }
+
+        const svgString = newShape.render();
         writeToFile("examples/logo.svg",svgString);
     })
 }
-
 
 // Function call to initialize app
 init();
