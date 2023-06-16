@@ -23,7 +23,7 @@ const questions = [
     {
         type: 'input',
         name: 'color',
-        message: 'What is the background color of the logo?',
+        message: 'What is the background color of the logo? (color keyword OR a hexadecimal number)',
     },
     {
         type: 'input',
@@ -33,45 +33,43 @@ const questions = [
         {
         type: 'input',
         name: 'textColor',
-        message: 'What color do you want the text?',
+        message: 'What color do you want the text? (color keyword OR a hexadecimal number)',
     },
 ]
 
 
+// Create a function to initialize app
+function init() {
+    inquirer.prompt(questions).then(answers => {
+        const shapeChoice = answers.shape;
+        let newShape;
+        
+        switch (shapeChoice) {
+            case 'Square':
+                newShape = new shapes.Square(answers.color, answers.text, answers.textColor);
+                break;
+                case 'Triangle':
+                    newShape = new shapes.Triangle(answers.color, answers.text, answers.textColor);
+                    break;
+                    case 'Circle':
+                        newShape = new shapes.Circle(answers.color, answers.text, answers.textColor);
+                        break;
+                        default:
+                            console.log('Invalid shape choice.');
+                            return;
+                        }
+                        
+                        const svgString = newShape.render();
+                        writeToFile("examples/logo.svg",svgString);
+        })
+}
+                
 // Output
-console.log('Creating a new Shape...');
-
 function writeToFile(fileName, data) {
     const svgContent = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">${data}</svg>`
     fs.writeFile(fileName, svgContent, (err) =>
     err ? console.error(err) : console.log("Generated logo.svg")
     );
-}
-
-// Create a function to initialize app
-function init() {
-    inquirer.prompt(questions).then(answers => {
-    const shapeChoice = answers.shape;
-    let newShape;
-
-    switch (shapeChoice) {
-      case 'Square':
-        newShape = new shapes.Square(answers.color, answers.text, answers.textColor);
-        break;
-      case 'Triangle':
-        newShape = new shapes.Triangle(answers.color, answers.text, answers.textColor);
-        break;
-      case 'Circle':
-        newShape = new shapes.Circle(answers.color, answers.text, answers.textColor);
-        break;
-      default:
-        console.log('Invalid shape choice.');
-        return;
-    }
-
-        const svgString = newShape.render();
-        writeToFile("examples/logo.svg",svgString);
-    })
 }
 
 // Function call to initialize app
