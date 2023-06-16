@@ -48,20 +48,20 @@ function init() {
             case 'Square':
                 newShape = new shapes.Square(answers.color, answers.text, answers.textColor);
                 break;
-                case 'Triangle':
-                    newShape = new shapes.Triangle(answers.color, answers.text, answers.textColor);
-                    break;
-                    case 'Circle':
-                        newShape = new shapes.Circle(answers.color, answers.text, answers.textColor);
-                        break;
-                        default:
-                            console.log('Invalid shape choice.');
-                            return;
-                        }
+            case 'Triangle':
+                newShape = new shapes.Triangle(answers.color, answers.text, answers.textColor);
+                break;
+            case 'Circle':
+                newShape = new shapes.Circle(answers.color, answers.text, answers.textColor);
+                break;
+            default:
+                console.log('Invalid shape choice.');
+                return;
+            }
                         
-                        const svgString = newShape.render();
-                        writeToFile("examples/logo.svg",svgString);
-        })
+        const svgString = newShape.render();
+        writeToFile("examples/logo.svg",svgString);
+    })
 }
                 
 // Output
