@@ -1,1 +1,1 @@
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><polygon points="150,10 280,190 20,190" fill="black"/><text x="75" y="150" fill="yellow" font-size="75">ABC</text></svg>
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="100" r="100" fill="black"/><text x="75" y="150" fill="white" font-size="75">ABC</text></svg>

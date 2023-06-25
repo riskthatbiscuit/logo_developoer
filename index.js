@@ -1,5 +1,3 @@
-// THEN I can enter a color keyword (OR a hexadecimal number)
-
 const inquirer = require('inquirer');
 const fs = require('fs')
 const shapes = require('./lib/shapes.js');
