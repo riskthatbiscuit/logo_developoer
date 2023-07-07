@@ -19,7 +19,7 @@ const questions = [
     {
         type: 'input',
         name: 'text',
-        message: 'What are the three letters you want in the logo?',
+        message: 'What are up to three letters you want in the logo?',
     },
         {
         type: 'input',
@@ -37,6 +37,12 @@ function init() {
         const shapeChoice = answers.shape;
         let newShape;
         
+        // Check if the text input is three letters or less
+        if (answers.text.length > 3) {
+            console.log('Invalid text input. Please enter three letters or less.');
+            return;
+        }
+
         // Create an instance of the selected shape class based on the user's choice
         switch (shapeChoice) {
             case 'Square':
