@@ -28,7 +28,7 @@ The logo properties, such as shape, color, text, and text color, can be customiz
 
 ## Walkthrough Video 🎥
 
-[Logo-Developer Video](/Logo-Developer-Video.mp4) provides a walkthrough of the functionality of the Logo Generator. It demonstrates how to use the application to create logos.
+[Logo-Developer Video](/Logo-Developer-Video.webm) provides a walkthrough of the functionality of the Logo Generator. It demonstrates how to use the application to create logos.
 
 ## Example Screenshot 🖼️
 
