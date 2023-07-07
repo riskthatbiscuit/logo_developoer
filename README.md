@@ -26,9 +26,16 @@ The following shapes are available for logo generation:
 
 The logo properties, such as shape, color, text, and text color, can be customized through the `index.js` file. The questions defined in the `questions` array can be modified or extended to suit your requirements.
 
-## Examples 👀
+## Walkthrough Video 🎥
 
-The `examples` directory contains pre-generated logo SVG files for reference.
+[Logo-Developer Video](/Logo-Developer-Video.mp4) provides a walkthrough of the functionality of the Logo Generator. It demonstrates how to use the application to create logos.
+
+## Example Screenshot 🖼️
+
+![Example Logo Screenshot](examples/logo3.png)
+
+The screenshot above shows an example logo generated using the Logo Generator application. It serves as a visual representation of the capabilities of the application.
+
 
 ## Testing ✅
 
