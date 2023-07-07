@@ -1,8 +1,9 @@
+// Import dependencies
 const inquirer = require('inquirer');
 const fs = require('fs')
 const shapes = require('./lib/shapes.js');
 
-// Get questions
+// Define questions for user
 const questions = [
       {
         type: 'list',
@@ -30,10 +31,13 @@ const questions = [
 
 // Create a function to initialize app
 function init() {
+    // Prompt the user with the questions and handle the answers
     inquirer.prompt(questions).then(answers => {
+        // Get the user's shape choice
         const shapeChoice = answers.shape;
         let newShape;
         
+        // Create an instance of the selected shape class based on the user's choice
         switch (shapeChoice) {
             case 'Square':
                 newShape = new shapes.Square(answers.color, answers.text, answers.textColor);
@@ -48,17 +52,23 @@ function init() {
                 console.log('Invalid shape choice.');
                 return;
             }
-                        
+        
+        // Render the shape as an SVG string
         const svgString = newShape.render();
+
+        // Write the SVG string to a file
         writeToFile("examples/logo.svg",svgString);
     })
 }
                 
-// Output
+// Write data to a file
 function writeToFile(fileName, data) {
+    // Create the SVG content with a fixed width and height
     const svgContent = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">${data}</svg>`
+
+    // Write the SVG content to the file
     fs.writeFile(fileName, svgContent, (err) =>
-    err ? console.error(err) : console.log("Generated logo.svg")
+        err ? console.error(err) : console.log("Generated logo.svg")
     );
 }
 
